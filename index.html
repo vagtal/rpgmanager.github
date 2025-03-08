@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- FAVICON -->
+		<link rel="icon" type="image/svg" href="/favicon.svg" />
+		<!-- THEME COLOR -->
+		<meta name="theme-color" content="#800080" />
+		<!-- GENERIC METADATA -->
+		<meta name="author" content="Vagtal" />
+		<!-- GOOGLE MATERIAL ICONS -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link href="./global.css" rel="stylesheet" />
+		<!-- TITLE -->
+		<title>RPG Manager</title>
+	</head>
+	<body>
+		<div class="floating">
+			<details class="dropdown dropdown-left dropdown-bottom">
+				<summary class="btn m-1">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block h-5 w-5 stroke-current">
+						<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+					</svg>
+				</summary>
+				<ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+					<li><a class="component-list" id="Notion">Notion</a></li>
+					<li><a class="component-list" id="Drive">Drive</a></li>
+					<li><a class="component-list" id="Tracker">Tracker</a></li>
+					<li><a class="component-list" id="Youtube">Youtube</a></li>
+					<li><a class="component-list" id="RabdRoll">RabdRoll</a></li>
+					<li><a class="component-list" id="RollForFantasy">RollForFantasy</a></li>
+					<li><a id="resetLayout">Reset</a></li>
+				</ul>
+			</details>
+		</div>
+
+		<div class="floating-state">
+			<details class="dropdown dropdown-right dropdown-top">
+				<summary class="btn m-1">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="inline-block h-5 w-5 stroke-current">
+						<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+					</svg>
+				</summary>
+				<ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+					<li><a id="saveState1">Save state 1</a></li>
+					<li><a id="loadState1">Load state 1</a></li>
+					<li><a id="saveState2">Save state 2</a></li>
+					<li><a id="loadState2">Load state 2</a></li>
+					<li><a id="saveState3">Save state 3</a></li>
+					<li><a id="loadState3">Load state 3</a></li>
+				</ul>
+			</details>
+		</div>
+		<main class="bg-slate-100">
+			<div id="golden-layout"></div>
+		</main>
+		<script type="module" src="script.js"></script>
+	</body>
+</html>

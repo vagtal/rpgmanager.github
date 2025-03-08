@@ -1,0 +1,105 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://golden-layout.com/files/latest/css/goldenlayout-base.css');
+@import url('https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css');
+
+/* Variables */
+:root {
+    --light-purple: lavender;
+    --selected: yellowgreen;
+}
+
+/* Generic */
+html, body {
+    height: 100%;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1)) !important;
+}
+html {
+    @apply text-slate-900;
+    font-family: "Open Sans", sans-serif;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 5px;
+}
+
+input {
+    color: black;
+    background-color: var(--light-purple) !important;
+}
+
+main {
+    flex: 1;
+    height: 100%;
+}
+
+h1 {
+    @apply text-5xl tracking-tight font-black text-purple-900; 
+}
+
+p, a {
+    @apply text-lg;
+}
+
+li {
+    @apply font-semibold;
+}
+
+a {
+    @apply text-sky-500 font-medium hover:underline underline-offset-4 break-words;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.btn  {
+    color: white;
+}
+
+/* Cambiar altura del tab */
+.lm_tab {
+    height: 30px !important; /* Ajusta el tamaño según lo necesario */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    padding: 10px; /* Ajusta el padding interno */
+    line-height: 30px;
+}
+
+/* Ajustar la barra de tabs */
+.lm_header {
+    height: 35px !important; /* Ajusta el tamaño de la barra de tabs */
+}
+
+#golden-layout {
+	width: 100%;
+	height: 100%;
+}
+.floating {
+	z-index: 111111;
+	position: absolute;
+	right: 0;
+	summary {
+		width: 30px;
+		height: 30px;
+		min-height: 30px;
+		padding: 5px;
+		margin: 2.5px;
+	}
+}
+.floating-state {
+	z-index: 111111;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	summary {
+		width: 30px;
+		height: 30px;
+		min-height: 30px;
+		padding: 5px;
+		margin: 2.5px;
+	}
+}
