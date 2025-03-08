@@ -84,23 +84,70 @@ a {
 	position: absolute;
 	right: 0;
 	summary {
-		width: 30px;
-		height: 30px;
-		min-height: 30px;
-		padding: 5px;
-		margin: 2.5px;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 8px;
+        top: 0px;
+        text-align: right;
+        padding-right: 3px;
+        cursor: pointer;
+        line-height: 28px;
 	}
+    ul {
+        position: relative;
+        top: 30px;
+        right: 5px;
+        background-color: white;
+        list-style: none;
+        padding: 15px;
+        margin: 0;
+        border-radius: 4px;
+    }
+    li {
+        padding: 5px 0;
+        cursor: pointer;        
+        color: dimgray;
+    }
+    li:hover {
+        color: black;
+    }
 }
 .floating-state {
 	z-index: 111111;
 	position: absolute;
-	left: 0;
-	bottom: 0;
+    left: 45px;
+    bottom: 40px;
 	summary {
-		width: 30px;
-		height: 30px;
-		min-height: 30px;
-		padding: 5px;
-		margin: 2.5px;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: -40px;
+        bottom: -32px;
+        text-align: right;
+        cursor: pointer;
+        background-color: black;
+        line-height: 28px;
+        padding-right: 3px;
+        border-radius: 5px;
+        padding-top: 3px;
 	}
+    ul {
+        position: relative;
+        top: 31px;
+        right: 5px;
+        background-color: white;
+        list-style: none;
+        padding: 15px;
+        margin: 0;
+        border-radius: 4px;
+    }
+    li {
+        padding: 5px 0;
+        cursor: pointer;        
+        color: dimgray;
+    }
+    li:hover {
+        color: black;
+    }
 }
