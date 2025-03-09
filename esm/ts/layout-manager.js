@@ -33,7 +33,7 @@ export class LayoutManager extends EventEmitter {
          * Default is true if <body> is the container otherwise false
          * Default will be changed to true for any container in the future
          */
-        this.resizeWithContainerAutomatically = false;
+        this.resizeWithContainerAutomatically = true;
         /** The debounce interval (in milliseconds) used whenever a layout is automatically resized.  0 means next tick */
         this.resizeDebounceInterval = 100;
         /** Extend the current debounce delay time period if it is triggered during the delay.
