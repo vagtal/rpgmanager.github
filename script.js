@@ -111,6 +111,9 @@ class Drive {
 }
 
 const defaultConfig = {
+  dimensions: {
+    headerHeight: 35
+  },
   root: {
     type: "row",
     content: [
