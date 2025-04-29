@@ -22,6 +22,17 @@ class Tracker {
   }
 }
 
+class Demiplane {
+  constructor(container) {
+    this.container = container
+    console.log(container.state)
+    this.rootElement = container.element
+    this.rootElement.innerHTML =
+      '<iframe width="100%" height="100%" src="https://app.demiplane.com/characters?login=true>'
+    this.resizeWithContainerAutomatically = true
+  }
+}
+
 class TabletopAudio {
   constructor(container) {
     this.container = container
@@ -88,7 +99,7 @@ class RabdRoll {
   }
 }
 
-class Notion {
+class Slayers {
   constructor(container) {
     this.container = container
     console.log(container.state)
@@ -127,10 +138,10 @@ const defaultConfig = {
             componentState: { text: "Drive C" }
           },
           {
-            title: "Notion",
+            title: "Slayers",
             type: "component",
-            componentType: "Notion",
-            componentState: { text: "Notion C" }
+            componentType: "Slayers",
+            componentState: { text: "Slayers C" }
           },
           {
             title: "RabdRoll",
@@ -235,11 +246,12 @@ const goldenLayout = new GoldenLayout(document.getElementById("golden-layout"))
 
 goldenLayout.registerComponentConstructor("Youtube", Youtube)
 goldenLayout.registerComponentConstructor("Tracker", Tracker)
-goldenLayout.registerComponentConstructor("Notion", Notion)
+goldenLayout.registerComponentConstructor("Slayers", Slayers)
 goldenLayout.registerComponentConstructor("Drive", Drive)
 goldenLayout.registerComponentConstructor("RollForFantasy", RollForFantasy)
 goldenLayout.registerComponentConstructor("FantasyName", FantasyName)
 goldenLayout.registerComponentConstructor("RabdRoll", RabdRoll)
+goldenLayout.registerComponentConstructor("Demiplane", Demiplane)
 
 goldenLayout.on("stateChanged", () => {
   let state = JSON.stringify(goldenLayout.saveLayout())
