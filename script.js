@@ -22,13 +22,13 @@ class Tracker {
   }
 }
 
-class Demiplane {
+class Coppermind {
   constructor(container) {
     this.container = container
     console.log(container.state)
     this.rootElement = container.element
     this.rootElement.innerHTML =
-      '<iframe width="100%" height="100%" src="https://app.demiplane.com/characters?login=true>'
+      '<iframe width="100%" height="100%" src="https://coppermind.net/wiki/Category:Stormlight_Archive">'
     this.resizeWithContainerAutomatically = true
   }
 }
@@ -119,6 +119,41 @@ class Drive {
       '<iframe id="myIframe" width="100%" height="100%" src="http://127.0.0.1:9090/">'
     this.resizeWithContainerAutomatically = true
   }
+
+}
+
+class Cosmere {
+  constructor(container) {
+    this.container = container
+    console.log(container.state)
+    this.rootElement = container.element
+    this.rootElement.innerHTML =
+      '<iframe id="myIframe" width="100%" height="100%" src="https://vagtal.notion.site/ebd/1c6993e94c35809489d7f3b8bd51fe47">'
+    this.resizeWithContainerAutomatically = true
+  }
+}
+
+class Games {
+  constructor(container) {
+    this.container = container
+    console.log(container.state)
+    this.rootElement = container.element
+    this.rootElement.innerHTML =
+      '<iframe id="myIframe" width="100%" height="100%" src="https://vagtal.notion.site/ebd/1db993e94c3580c0a7d4f19f76b1126a">'
+    this.resizeWithContainerAutomatically = true
+  }
+}
+
+
+class SLWiki {
+  constructor(container) {
+    this.container = container
+    console.log(container.state)
+    this.rootElement = container.element
+    this.rootElement.innerHTML =
+      '<iframe id="myIframe" width="100%" height="100%" src="https://stormlightarchive.fandom.com/wiki/Stormlight_Archive_Wiki">'
+    this.resizeWithContainerAutomatically = true
+  }
 }
 
 const defaultConfig = {
@@ -132,22 +167,34 @@ const defaultConfig = {
         type: "stack",
         content: [
           {
+            title: "Games",
+            type: "component",
+            componentType: "Games",
+            componentState: { text: "Games C" }
+          },
+          {
+            title: "Cosmere",
+            type: "component",
+            componentType: "Cosmere",
+            componentState: { text: "Cosmere C" }
+          },
+          {
             title: "Drive",
             type: "component",
             componentType: "Drive",
             componentState: { text: "Drive C" }
           },
           {
-            title: "Slayers",
+            title: "Coppermind",
             type: "component",
-            componentType: "Slayers",
-            componentState: { text: "Slayers C" }
+            componentType: "Coppermind",
+            componentState: { text: "Coppermind C" }
           },
           {
-            title: "RabdRoll",
+            title: "SLWiki",
             type: "component",
-            componentType: "RabdRoll",
-            componentState: { text: "RabdRoll C" }
+            componentType: "SLWiki",
+            componentState: { text: "SLWiki C" }
           }
         ]
       },
@@ -161,16 +208,22 @@ const defaultConfig = {
                 type: "stack",
                 content: [
                   {
-                    title: "Youtube",
-                    type: "component",
-                    componentType: "Youtube",
-                    componentState: { url: "Youtube C" }
-                  },
-                  {
                     title: "RollForFantasy",
                     type: "component",
                     componentType: "RollForFantasy",
                     componentState: { text: "RollForFantasy C" }
+                  },
+                  {
+                    title: "RabdRoll",
+                    type: "component",
+                    componentType: "RabdRoll",
+                    componentState: { text: "RabdRoll C" }
+                  },
+                  {
+                    title: "Youtube",
+                    type: "component",
+                    componentType: "Youtube",
+                    componentState: { url: "Youtube C" }
                   }
                 ]
               },
@@ -204,7 +257,6 @@ const menuItems = document.querySelectorAll(".floating ul li a.component-list")
 menuItems.forEach(menuItem => {
   menuItem.addEventListener("click", event => {
     const id = event.target["id"]
-    console.log(id)
     goldenLayout.addComponent(id, undefined, id)
   })
 })
@@ -253,7 +305,10 @@ goldenLayout.registerComponentConstructor("Drive", Drive)
 goldenLayout.registerComponentConstructor("RollForFantasy", RollForFantasy)
 goldenLayout.registerComponentConstructor("FantasyName", FantasyName)
 goldenLayout.registerComponentConstructor("RabdRoll", RabdRoll)
-goldenLayout.registerComponentConstructor("Demiplane", Demiplane)
+goldenLayout.registerComponentConstructor("Coppermind", Coppermind)
+goldenLayout.registerComponentConstructor("SLWiki", SLWiki)
+goldenLayout.registerComponentConstructor("Cosmere", Cosmere)
+goldenLayout.registerComponentConstructor("Games", Games)
 
 goldenLayout.on("stateChanged", () => {
   let state = JSON.stringify(goldenLayout.saveLayout())
