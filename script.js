@@ -203,7 +203,9 @@ const menuItems = document.querySelectorAll(".floating ul li a.component-list")
 
 menuItems.forEach(menuItem => {
   menuItem.addEventListener("click", event => {
-    goldenLayout.addComponent(event.target["id"], undefined, event.target["id"])
+    const id = event.target["id"]
+    console.log(id)
+    goldenLayout.addComponent(id, undefined, id)
   })
 })
 
