@@ -17,8 +17,20 @@
 		<title>RPG Manager</title>
 	</head>
 	<body>
+		<div id="modal">
+			<div id="addUrl">
+				<spam class="white">Name</spam>
+				<input id="urlName"/>
+				<spam class="white">Url</spam>
+				<input id="url"/>
+				<div class="buttons">
+					<button id="saveUrl">Save</button>
+					<button id="cancelUrl">Cancel</button>
+				</div>
+			</div>
+		</div>
 		<div class="floating">
-			<details class="dropdown dropdown-left dropdown-bottom">
+			<details id="iconContent" class="dropdown dropdown-left dropdown-bottom">
 				<summary class="btn m-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -43,13 +55,15 @@
 					<li><a class="component-list" id="SLWiki">SLWiki</a></li>
 					<li><a class="component-list" id="Cosmere">Cosmere</a></li>
 					<li><a class="component-list" id="Games">Games</a></li>
+					<li><a class="add-list" id="addList">Add url</a></li>
 					<li><a class="red" id="resetLayout">Reset</a></li>
 				</ul>
 			</details>
 		</div>
+		
 
 		<div class="floating-state">
-			<details class="dropdown dropdown-right dropdown-top">
+			<details id="iconStatus"  class="dropdown dropdown-right dropdown-top">
 				<summary class="btn m-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
