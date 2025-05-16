@@ -147,6 +147,10 @@ document.getElementById("resetLayout").addEventListener("click", event => {
   location.reload()
 })
 
+document.getElementById("paint").addEventListener("click", event => {
+  window.open("https://kleki.com/?lang=es", '_blank').focus();
+})
+
 document.getElementById("addList").addEventListener("click", event => {
   document.getElementById("modal").style.display = 'grid'
   document.getElementById('iconContent').removeAttribute("open")
