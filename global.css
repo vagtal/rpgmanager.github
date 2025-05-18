@@ -205,3 +205,22 @@ a {
         color: black;
     }
 }
+
+.lm_controls {
+    height: 100%;
+    align-items: center;
+}
+
+.lm_header .lm_controls > * {
+    background-size: 15px;
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.lm_close {
+    visibility: hidden;
+}
+
+.lm_header .lm_tab.lm_active.lm_focused {
+    background-color: #302e2e !important;
+}

@@ -33,6 +33,7 @@ const RabdRoll = createClass('https://www.randroll.com/30-days-gen-sites/')
 const Drive = createClass('http://127.0.0.1:9090/')
 const Slayers = createClass('https://vagtal.notion.site/ebd/a342d25996d14aad89ba274026e69062')
 const Cosmere = createClass('https://vagtal.notion.site/ebd/1c6993e94c35809489d7f3b8bd51fe47')
+const Sound = createClass('https://app.syrinscape.com/#/?soundset=3&element=1565315')
 const Games = createClass('https://vagtal.notion.site/ebd/1db993e94c3580c0a7d4f19f76b1126a')
 const SLWiki = createClass('https://stormlightarchive.fandom.com/wiki/Stormlight_Archive_Wiki')
 
@@ -75,6 +76,12 @@ const defaultConfig = {
             type: "component",
             componentType: "SLWiki",
             componentState: { text: "SLWiki C" }
+          },
+          {
+            title: "PDF",
+            type: "component",
+            componentType: "PDF",
+            componentState: { text: "PDF C" }
           }
         ]
       },
@@ -121,6 +128,12 @@ const defaultConfig = {
                     type: "component",
                     componentType: "FantasyName",
                     componentState: { text: "FantasyName C" }
+                  },
+                  {
+                    title: "Sound",
+                    type: "component",
+                    componentType: "Sound",
+                    componentState: { text: "Sound C" }
                   }
                 ]
               }
@@ -129,6 +142,39 @@ const defaultConfig = {
         ]
       }
     ]
+  }
+}
+
+class PDF {
+  constructor(container) {
+    this.container = container;
+    container.on('destroy', () => {
+      const name = this.container._componentType;
+      if (name.includes('dynamicClass') && !isReloading) {
+        dynamicClasses = dynamicClasses.filter(clss => clss.name !== name);
+        localStorage.setItem('classes', JSON.stringify(dynamicClasses));
+      }
+    });
+
+    this.rootElement = container.element;
+    this.rootElement.innerHTML = `
+      <div style="height: 100%; display: flex; flex-direction: column;">
+        <input type="file" id="pdf-file" accept="application/pdf" style="padding: 4px;" />
+        <iframe id="pdf-frame" style="flex: 1; border: none;"></iframe>
+      </div>
+    `;
+
+    const input = this.rootElement.querySelector('#pdf-file');
+    const iframe = this.rootElement.querySelector('#pdf-frame');
+
+    input.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const blob = new Blob([file], { type: "application/pdf" });
+      const blobUrl = URL.createObjectURL(blob);
+      iframe.src = `pdfjs/web/viewer.html?file=${encodeURIComponent(blobUrl)}`;
+    });
   }
 }
 
@@ -225,7 +271,9 @@ goldenLayout.registerComponentConstructor("RabdRoll", RabdRoll)
 goldenLayout.registerComponentConstructor("Coppermind", Coppermind)
 goldenLayout.registerComponentConstructor("SLWiki", SLWiki)
 goldenLayout.registerComponentConstructor("Cosmere", Cosmere)
+goldenLayout.registerComponentConstructor("Sound", Sound)
 goldenLayout.registerComponentConstructor("Games", Games)
+goldenLayout.registerComponentConstructor("PDF", PDF)
 dynamicClasses.forEach(cls => {
   goldenLayout.registerComponentConstructor(cls.name, createClass(cls.url))
 })
