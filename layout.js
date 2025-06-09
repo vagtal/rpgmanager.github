@@ -80,9 +80,9 @@ class PDF {
     this.container = container
     this.rootElement = container.element
     this.rootElement.innerHTML = `
-      <div style='height: 100% display: flex flex-direction: column'>
+      <div style='height: 100%; display: flex; flex-direction: column;'>
         <input type='file' id='pdf-file' accept='application/pdf' style='padding: 4px' />
-        <iframe id='pdf-frame' style='flex: 1 border: none'></iframe>
+        <iframe id='pdf-frame' style='flex: 1; border: none;'></iframe>
       </div>
     `
 
