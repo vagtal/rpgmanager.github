@@ -41,26 +41,77 @@ document.getElementById('saveUrl').addEventListener('click', () => {
   }
 })
 
-function createSaveLayout(id) {
-  document.getElementById('saveState' + id).addEventListener('click', () => {
-    let state = JSON.stringify(goldenLayout.saveLayout())
-    localStorage.setItem('goldenLayoutStateSaved' + id, state)
-  })
+renderSavedStates(true)
+saveStateListener()
+
+function saveStateListener() {
+  document.getElementById('saveState').addEventListener('click', () => {
+  try {
+    const states = localStorage.getItem('goldenLayoutStateSaved')
+    const statesProcessed = states ? JSON.parse(states) : []
+
+    const state = JSON.stringify(goldenLayout.saveLayout())
+    statesProcessed.push(state)
+    localStorage.setItem('goldenLayoutStateSaved', JSON.stringify(statesProcessed))
+
+    renderSavedStates()
+
+  } catch (err) {
+    console.error(err)
+  }
+})
 }
 
-function createLoadLayout(id) {
-  document.getElementById('loadState' + id).addEventListener('click', () => {
-    const savedLayout = localStorage.getItem('goldenLayoutStateSaved' + id)
-    savedLayout && goldenLayout.loadLayout(JSON.parse(savedLayout))
-  })
-}
+function renderSavedStates(first) {
+  const stateMenu = document.getElementById('stateMenu')
+  
+  stateMenu.innerHTML = '<li id="saveState"><a>Save state</a></li>'
 
-createSaveLayout(1)
-createSaveLayout(2)
-createSaveLayout(3)
-createLoadLayout(1)
-createLoadLayout(2)
-createLoadLayout(3)
+  const savedLayouts = localStorage.getItem('goldenLayoutStateSaved')
+  const savedLayoutProcessed = savedLayouts ? JSON.parse(savedLayouts) : []
+
+  savedLayoutProcessed.forEach((layout, index) => {
+    const li = document.createElement('li')
+    li.classList.add('stateSaved')
+    li.setAttribute('attr-state', index)
+
+    const a = document.createElement('a')
+    a.textContent = `Load state ${index}`
+    a.style.cursor = 'pointer'
+    a.addEventListener('click', () => {
+      const layouts = localStorage.getItem('goldenLayoutStateSaved')
+      const layoutsProcessed = layouts ? JSON.parse(layouts) : undefined
+      console.log(layoutsProcessed, index, layoutsProcessed?.[index])
+      if (layoutsProcessed) {
+        goldenLayout.loadLayout(JSON.parse(layoutsProcessed[index]))
+      }
+    })
+
+    const deleteButton = document.createElement('b')
+    deleteButton.textContent = '🗑'
+    deleteButton.style.marginLeft = '10px'
+    deleteButton.style.display = 'inline-block'
+    deleteButton.style.textAlign = 'center'
+    deleteButton.style.width = '30px'
+    deleteButton.addEventListener('click', (e) => {
+      e.stopPropagation()
+      const layouts = localStorage.getItem('goldenLayoutStateSaved')
+      const layoutsProcessed = layouts ? JSON.parse(layouts) : []
+
+      layoutsProcessed.splice(index, 1)
+
+      localStorage.setItem('goldenLayoutStateSaved', JSON.stringify(layoutsProcessed))
+      
+      renderSavedStates()
+    })
+
+    li.appendChild(a)
+    li.appendChild(deleteButton)
+
+    stateMenu.appendChild(li)
+  })
+  !first && saveStateListener()
+}
 
 function closeMenu() {  
     document.getElementById('iconContent').removeAttribute('open')

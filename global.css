@@ -183,6 +183,15 @@ a {
     }
 }
 
+#saveState {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.stateSaved {
+    height: 30px;
+}
+
 .floating-state {
     left: 45px;
     bottom: 40px;
@@ -201,6 +210,9 @@ a {
         background-color: white;
         padding: 15px;
         border-radius: 4px;
+    }
+    li b:hover {
+        color: red;
     }
 }
 
