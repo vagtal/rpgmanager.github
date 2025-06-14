@@ -55,7 +55,7 @@ function saveStateListener() {
     localStorage.setItem('goldenLayoutStateSaved', JSON.stringify(statesProcessed))
 
     renderSavedStates()
-
+  
   } catch (err) {
     console.error(err)
   }
@@ -103,6 +103,7 @@ function renderSavedStates(first) {
       localStorage.setItem('goldenLayoutStateSaved', JSON.stringify(layoutsProcessed))
       
       renderSavedStates()
+      closeMenu()
     })
 
     li.appendChild(a)
