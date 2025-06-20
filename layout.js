@@ -109,7 +109,7 @@ export function addGLClass(name, className, url) {
 let dynamicClasses = localStorage.getItem('classes') ? JSON.parse(localStorage.getItem('classes')) : []
 const Youtube = createClass('https://vagtal.github.io/notion-playlist-plugin.github.io/')
 const Tracker = createClass('https://vagtal.github.io/notion-init-tracker-plugin.github.io/')
-const Coppermind = createClass('https://coppermind.net/wiki/Category:Stormlight_Archive')
+const Coppermind = createClass('https://es.coppermind.net/wiki/Categor%C3%ADa:Cosmere')
 const RollForFantasy = createClass('https://rollforfantasy.com/')
 const FantasyName = createClass('https://www.fantasynamegenerators.com/')
 const RabdRoll = createClass('https://www.randroll.com/30-days-gen-sites/')
